@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de números dentro de un Array</title>
+</head>
+<body>
+    <p>Algoritmo que permite validar si los elementos de un array numerico se repiten</p>
+    <p>El array a evaluar es:</p>
+    <p>array1 = [1, 2, 3, 4, 5, 6, 7, 6]</p>
+    <p id="resultado"></p>
+
+
+    <script>
+        var array1 = [1, 2, 3, 4, 5, 6, 7, 6];
+        var lenghtPre = array1.length;
+        var repite = array1.map(function(element, index, array1){
+            var revisa = array1.filter(function(subelement, subindex){
+                if(index != subindex){
+                    return array1[index] == subelement
+                }
+            })
+            if(typeof revisa[0] != 'undefined'){
+                array1.splice(index, 1)
+            }
+        })
+        var t = document.getElementById("resultado");
+        if(lenghtPre > array1.length){
+            var y = document.createTextNode("Tienes valores repetidos, debes corregirlos para continuar");
+            console.log('Tienes valores repetidos, debes corregirlos para continuar')
+        }else{
+            var y = document.createTextNode("todo viento en popa");
+            console.log('todo viento en popa')
+        }
+        t.appendChild(y);
+    </script>
+</body>
+</html>
